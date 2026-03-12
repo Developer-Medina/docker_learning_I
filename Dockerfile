@@ -17,4 +17,3 @@ COPY app/main.py .
 
 # Quando o container inciiar,roda o python main.py
 CMD ["python", "main.py"]
-

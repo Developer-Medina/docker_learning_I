@@ -1,7 +1,7 @@
 services:
   db:
     image: mariadb:11.4
-    container_name: cotacao_db
+    container_name: jwst_db
     restart: unless-stopped
 
     environment:
@@ -17,7 +17,7 @@ services:
       - db_data:/var/lib/mysql
 
     networks:
-      - cotacao_net
+      - jwst_net
 
     healthcheck:
       test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
@@ -28,7 +28,7 @@ services:
 
   app:
     build: .
-    container_name: cotacao_app
+    container_name: jwst_app
 
     environment:
       DB_HOST: db
@@ -41,11 +41,11 @@ services:
         condition: service_healthy
 
     networks:
-      - cotacao_net
+      - jwst_net
 
 volumes:
   db_data:
 
 networks:
-  cotacao_net:
+  jwst_net:
     driver: bridge

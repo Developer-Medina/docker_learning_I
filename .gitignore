@@ -1,0 +1,3 @@
+# Ignorando o env e logs do Docker. O venv já é ignorado por padrão.
+.env
+*.log
